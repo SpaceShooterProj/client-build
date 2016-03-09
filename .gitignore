@@ -1,0 +1,9 @@
+**/*.sw?
+**/node_modules
+.DS_Store
+**/*.log
+db/
+/public/css/style.css
+coverage/
+**/test/*bundle.js
+build/
