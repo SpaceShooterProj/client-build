@@ -19,7 +19,7 @@ gulp.task('css:dev', () => {
 });
 gulp.task('build:dev', [
   'scripts:dev',
-  'html:dev',
+  // 'html:dev',
   'css:dev',
   'assets:dev'
 ]);
