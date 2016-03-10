@@ -10,6 +10,8 @@ var handleFailure = function(callback) {
   }
 };
 
+var HOST = "http://spacecataz.herokuapp.com"
+
 module.exports = function(app) {
   app.factory('userAuth', ['$http', '$window', function($http, $window) {
     var token;
@@ -17,7 +19,7 @@ module.exports = function(app) {
     var auth = {
       createUser: function(user, callback) {
         callback = callback || function() {};
-        $http.post('http://localhost:3000/api/signup', user)
+        $http.post(HOST + '/api/signup', user)
         .then(function(res) {
           token = $window.localStorage.token = res.data.token;
           callback(null, res);
@@ -30,7 +32,7 @@ module.exports = function(app) {
         callback = callback || function() {};
         $http({
           method: 'GET',
-          url: 'http://localhost:3000/api/signin',
+          url: HOST + "/api/signin",
           headers: {
             'Authorization': 'Basic ' + btoa((user.email + ':' + user.password))
           }
@@ -59,7 +61,7 @@ module.exports = function(app) {
         callback = callback || function() {};
         $http({
           method: 'GET',
-          url: 'http://localhost:3000/api/currentuser',
+          url: HOST + '/api/currentuser',
           headers: {
             token: auth.getToken()
           }
